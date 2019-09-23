@@ -22,7 +22,20 @@ exports.addNote = function (title, body) {
         console.log(chalk_1.default.green.bold('Note added!'));
     }
     else {
-        console.log(chalk_1.default.red.bold('Duplicate title, please choose a different title for your note'));
+        console.log(chalk_1.default.red.bold('Duplicate title, please choose a different title for your note!'));
+    }
+};
+exports.removeNote = function (title) {
+    var notes = loadNotes();
+    var keepNotes = notes.filter(function (note) {
+        return note.title !== title;
+    });
+    if (notes.length === keepNotes.length) {
+        console.log(chalk_1.default.red.bold('Note title not found'));
+    }
+    else {
+        saveNotes(keepNotes);
+        console.log(chalk_1.default.green.bold('Note removed!'));
     }
 };
 var saveNotes = function (notes) {

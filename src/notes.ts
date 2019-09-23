@@ -25,9 +25,26 @@ export const addNote = (title: any, body: any): void => {
   } else {
     console.log(
       chalk.red.bold(
-        'Duplicate title, please choose a different title for your note'
+        'Duplicate title, please choose a different title for your note!'
       )
     );
+  }
+};
+
+export const removeNote = (title: any): void => {
+  const notes = loadNotes();
+  const keepNotes: [] = notes.filter(
+    (note: { title: string; body: string }): boolean => {
+      return note.title !== title;
+    }
+  );
+
+  if (notes.length === keepNotes.length) {
+    console.log(chalk.red.bold('Note title not found'));
+  } else {
+    saveNotes(keepNotes);
+
+    console.log(chalk.green.bold('Note removed!'));
   }
 };
 

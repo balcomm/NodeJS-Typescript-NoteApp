@@ -1,7 +1,7 @@
 import fs from 'fs';
 import chalk from 'chalk';
 import yargs from 'yargs';
-import { getNotes, addNote } from './notes';
+import { addNote, removeNote } from './notes';
 
 // Customize yargs version
 yargs.version('1.1.0');
@@ -31,8 +31,15 @@ yargs.command({
 yargs.command({
   command: 'remove',
   describe: 'Removing a note',
-  handler: (): void => {
-    console.log('Removing a note!');
+  builder: {
+    title: {
+      describe: 'Title of note you would like to remove',
+      demandOption: true,
+      type: 'string'
+    }
+  },
+  handler: (argv): void => {
+    removeNote(argv.title);
   }
 });
 
