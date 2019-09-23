@@ -47,15 +47,13 @@ yargs_1.default.command({
     command: 'list',
     describe: 'List all notes',
     handler: function () {
-        console.log('Listing notes!');
+        notes_1.listNotes();
     }
 });
 // Create read command
 yargs_1.default.command({
     command: 'read',
     describe: 'Reading note',
-    handler: function () {
-        console.log('Reading notes!');
-    }
+    handler: function () { }
 });
 yargs_1.default.parse();

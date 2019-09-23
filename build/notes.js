@@ -34,6 +34,18 @@ exports.removeNote = function (title) {
         console.log(chalk_1.default.green.bold('Note removed!'));
     }
 };
+exports.listNotes = function () {
+    var notes = loadNotes();
+    if (notes.length > 0) {
+        console.log(chalk_1.default.green.bold.inverse('   Your Notes   '));
+        notes.forEach(function (el, index) {
+            console.log(chalk_1.default.green.bold((index + 1).toString() + '.)') + " " + chalk_1.default.italic(el.title));
+        });
+    }
+    else {
+        console.log(chalk_1.default.red.bold('No notes found'));
+    }
+};
 var saveNotes = function (notes) {
     var dataJSON = JSON.stringify(notes);
     fs_1.default.writeFileSync('notes.json', dataJSON);

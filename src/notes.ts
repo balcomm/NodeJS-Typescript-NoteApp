@@ -44,6 +44,26 @@ export const removeNote = (title: any): void => {
   }
 };
 
+export const listNotes = (): void => {
+  const notes = loadNotes();
+
+  if (notes.length > 0) {
+    console.log(chalk.green.bold.inverse('   Your Notes   '));
+
+    notes.forEach(
+      (el: { title: string; body: string }, index: number): void => {
+        console.log(
+          `${chalk.green.bold((index + 1).toString() + '.)')} ${chalk.italic(
+            el.title
+          )}`
+        );
+      }
+    );
+  } else {
+    console.log(chalk.red.bold('No notes found'));
+  }
+};
+
 const saveNotes = (notes: []): void => {
   const dataJSON = JSON.stringify(notes);
   fs.writeFileSync('notes.json', dataJSON);

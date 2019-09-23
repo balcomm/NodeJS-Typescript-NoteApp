@@ -1,5 +1,5 @@
 import yargs from 'yargs';
-import { addNote, removeNote } from './notes';
+import { addNote, removeNote, listNotes } from './notes';
 
 // Customize yargs version
 yargs.version('1.1.0');
@@ -46,7 +46,7 @@ yargs.command({
   command: 'list',
   describe: 'List all notes',
   handler(): void {
-    console.log('Listing notes!');
+    listNotes();
   }
 });
 
@@ -54,9 +54,7 @@ yargs.command({
 yargs.command({
   command: 'read',
   describe: 'Reading note',
-  handler(): void {
-    console.log('Reading notes!');
-  }
+  handler(): void {}
 });
 
 yargs.parse();
