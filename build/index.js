@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var chalk_1 = __importDefault(require("chalk"));
 var yargs_1 = __importDefault(require("yargs"));
 // Customize yargs version
 yargs_1.default.version('1.1.0');
@@ -10,8 +11,20 @@ yargs_1.default.version('1.1.0');
 yargs_1.default.command({
     command: 'add',
     describe: 'Add a new note',
-    handler: function () {
-        console.log('Adding a new note!');
+    builder: {
+        title: {
+            describe: 'Note title',
+            demandOption: true,
+            type: 'string'
+        },
+        body: {
+            describe: 'Note description',
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler: function (argv) {
+        console.log(chalk_1.default.blue.bold.underline('Note Details') + "\n" + chalk_1.default.bold('Title') + ": " + argv.title + "\n" + chalk_1.default.bold('Body') + ": " + argv.body);
     }
 });
 // Create remove command
@@ -38,4 +51,4 @@ yargs_1.default.command({
         console.log('Reading notes!');
     }
 });
-console.log(yargs_1.default.argv);
+yargs_1.default.parse();
