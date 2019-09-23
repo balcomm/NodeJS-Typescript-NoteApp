@@ -1,0 +1,19 @@
+{
+  "name": "noteapp",
+  "version": "1.0.0",
+  "description": "Note taking app",
+  "main": "index.js",
+  "scripts": {
+    "start:build": "tsc -w",
+    "start:run": "nodemon build/index.js",
+    "start": "concurrently npm:start:*"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^12.7.5",
+    "concurrently": "^4.1.2",
+    "chalk": "^2.4.2"
+  }
+}
