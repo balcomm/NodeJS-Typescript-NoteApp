@@ -1,5 +1,5 @@
 import yargs from 'yargs';
-import { addNote, removeNote, listNotes } from './notes';
+import { addNote, removeNote, listNotes, readNote } from './notes';
 
 // Customize yargs version
 yargs.version('1.1.0');
@@ -53,8 +53,17 @@ yargs.command({
 // Create read command
 yargs.command({
   command: 'read',
-  describe: 'Reading note',
-  handler(): void {}
+  describe: 'Read note',
+  builder: {
+    title: {
+      describe: 'Title of note you would like to read',
+      demandOption: true,
+      type: 'string'
+    }
+  },
+  handler(argv): void {
+    readNote(argv.title);
+  }
 });
 
 yargs.parse();

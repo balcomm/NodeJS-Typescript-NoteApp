@@ -53,7 +53,16 @@ yargs_1.default.command({
 // Create read command
 yargs_1.default.command({
     command: 'read',
-    describe: 'Reading note',
-    handler: function () { }
+    describe: 'Read note',
+    builder: {
+        title: {
+            describe: 'Title of note you would like to read',
+            demandOption: true,
+            type: 'string'
+        }
+    },
+    handler: function (argv) {
+        notes_1.readNote(argv.title);
+    }
 });
 yargs_1.default.parse();

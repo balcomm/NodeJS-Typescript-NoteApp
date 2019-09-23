@@ -1,17 +1,13 @@
 import fs from 'fs';
 import chalk from 'chalk';
 
-export const getNotes = (): string => {
-  return 'Bitchin notes babe';
-};
-
 export const addNote = (title: any, body: any): void => {
   const notes = loadNotes();
-  const dupNotes: [] = notes.filter(
+  const dupNote = notes.find(
     (note: { title: string; body: string }): boolean => note.title === title
   );
 
-  if (dupNotes.length === 0) {
+  if (!dupNote) {
     notes.push({
       title,
       body
@@ -61,6 +57,24 @@ export const listNotes = (): void => {
     );
   } else {
     console.log(chalk.red.bold('No notes found'));
+  }
+};
+
+export const readNote = (title: any): void => {
+  const notes = loadNotes();
+
+  const foundNote = notes.find(
+    (note: { title: string; body: string }): boolean => note.title === title
+  );
+
+  if (foundNote) {
+    console.log(chalk.green.bold.inverse('   Your Note   '));
+    console.log(
+      `${chalk.green.bold('Title:')} ${chalk.italic(foundNote.title)}`
+    );
+    console.log(`${chalk.green.bold('Body:')} ${foundNote.body}`);
+  } else {
+    console.log(chalk.bold.red('Note not found'));
   }
 };
 
