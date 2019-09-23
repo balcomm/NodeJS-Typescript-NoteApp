@@ -10,9 +10,7 @@ exports.getNotes = function () {
 };
 exports.addNote = function (title, body) {
     var notes = loadNotes();
-    var dupNotes = notes.filter(function (note) {
-        return note.title === title;
-    });
+    var dupNotes = notes.filter(function (note) { return note.title === title; });
     if (dupNotes.length === 0) {
         notes.push({
             title: title,
@@ -27,9 +25,7 @@ exports.addNote = function (title, body) {
 };
 exports.removeNote = function (title) {
     var notes = loadNotes();
-    var keepNotes = notes.filter(function (note) {
-        return note.title !== title;
-    });
+    var keepNotes = notes.filter(function (note) { return note.title !== title; });
     if (notes.length === keepNotes.length) {
         console.log(chalk_1.default.red.bold('Note title not found'));
     }

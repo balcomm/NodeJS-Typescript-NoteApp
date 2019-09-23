@@ -7,10 +7,8 @@ export const getNotes = (): string => {
 
 export const addNote = (title: any, body: any): void => {
   const notes = loadNotes();
-  const dupNotes: string[] = notes.filter(
-    (note: { title: string; body: string }): boolean => {
-      return note.title === title;
-    }
+  const dupNotes: [] = notes.filter(
+    (note: { title: string; body: string }): boolean => note.title === title
   );
 
   if (dupNotes.length === 0) {
@@ -34,9 +32,7 @@ export const addNote = (title: any, body: any): void => {
 export const removeNote = (title: any): void => {
   const notes = loadNotes();
   const keepNotes: [] = notes.filter(
-    (note: { title: string; body: string }): boolean => {
-      return note.title !== title;
-    }
+    (note: { title: string; body: string }): boolean => note.title !== title
   );
 
   if (notes.length === keepNotes.length) {

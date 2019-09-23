@@ -1,5 +1,3 @@
-import fs from 'fs';
-import chalk from 'chalk';
 import yargs from 'yargs';
 import { addNote, removeNote } from './notes';
 
@@ -22,7 +20,7 @@ yargs.command({
       type: 'string'
     }
   },
-  handler: (argv): void => {
+  handler(argv): void {
     addNote(argv.title, argv.body);
   }
 });
@@ -38,7 +36,7 @@ yargs.command({
       type: 'string'
     }
   },
-  handler: (argv): void => {
+  handler(argv): void {
     removeNote(argv.title);
   }
 });
@@ -47,7 +45,7 @@ yargs.command({
 yargs.command({
   command: 'list',
   describe: 'List all notes',
-  handler: (): void => {
+  handler(): void {
     console.log('Listing notes!');
   }
 });
@@ -56,7 +54,7 @@ yargs.command({
 yargs.command({
   command: 'read',
   describe: 'Reading note',
-  handler: (): void => {
+  handler(): void {
     console.log('Reading notes!');
   }
 });
