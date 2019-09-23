@@ -3,8 +3,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var chalk_1 = __importDefault(require("chalk"));
 var yargs_1 = __importDefault(require("yargs"));
+var notes_1 = require("./notes");
 // Customize yargs version
 yargs_1.default.version('1.1.0');
 // Create add command
@@ -24,7 +24,7 @@ yargs_1.default.command({
         }
     },
     handler: function (argv) {
-        console.log(chalk_1.default.blue.bold.underline('Note Details') + "\n" + chalk_1.default.bold('Title') + ": " + argv.title + "\n" + chalk_1.default.bold('Body') + ": " + argv.body);
+        notes_1.addNote(argv.title, argv.body);
     }
 });
 // Create remove command

@@ -1,5 +1,0 @@
-Hello, my name is Gooblee Gumdor
-
-This data was appended to the file. The filename is notes.txt
-
-This data was appended to the file. The filename is notes.txt

@@ -1,6 +1,7 @@
+import fs from 'fs';
 import chalk from 'chalk';
 import yargs from 'yargs';
-import { getNotes } from './notes';
+import { getNotes, addNote } from './notes';
 
 // Customize yargs version
 yargs.version('1.1.0');
@@ -22,11 +23,7 @@ yargs.command({
     }
   },
   handler: (argv): void => {
-    console.log(
-      `${chalk.blue.bold.underline('Note Details')}
-${chalk.bold('Title')}: ${argv.title}
-${chalk.bold('Body')}: ${argv.body}`
-    );
+    addNote(argv.title, argv.body);
   }
 });
 
